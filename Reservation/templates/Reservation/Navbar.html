@@ -1,0 +1,60 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+   
+    <title>Reservation</title>
+    
+    <!-- Style CSS -->
+    <link rel="stylesheet" href="{% static '/navbar/css/style.css' %} ">
+	<!-- Demo CSS (No need to include it into your project) -->
+	<link rel="stylesheet" href="{% static '/navbar/css/demo.css' %}">
+  
+  </head>
+  <body>
+ <div class="row">  
+ <main>
+     <!-- Start DEMO HTML (Use the following code into your project)-->
+  <header class="header-area">
+  <!-- site-navbar start -->
+  <div class="navbar-area">
+    <div class="container">
+      <nav class="site-navbar">
+        <!-- site logo -->
+        <a href="#home" class="site-logo">Reservation</a>
+
+        <!-- site menu/nav -->
+        <ul>
+          <li><a href="{% url 'home'%}" class="btn btn-outline-success">home</a></li>
+          <li><a href="#" class="btn btn-outline-success">Reservation</a></li>
+          <li><a href="#"class="btn btn-outline-success">Salle</a></li>
+          <li><a href="{% url 'home' %}" class="btn btn-outline-success">Table</a></li>
+          <li><a href="{% url 'client' %}" class="btn btn-outline-success">Client</a></li>
+
+        </ul>
+        <ul> <li><a href="{% url 'client_home' %}" class="btn btn-outline-success">Deconnecter</a></li> </ul>
+        <form class="d-flex">
+            <input class="form-control me-1" type="Chercher" placeholder="Chercher" aria-label="Chercher">
+            <button class="btn btn-outline-success" type="submit">Chercher</button>
+          </form>
+      
+        <!-- nav-toggler for mobile version only -->
+        <button class="nav-toggler">
+          <span></span>
+        </button>
+      </nav>
+    </div>
+  </div><!-- navbar-area end -->
+
+    
+</header>   
+     <!-- END EDMO HTML (Happy Coding!)-->
+ </main>
+ 
+      
+
+  <!-- Script JS -->
+  <script src="{% static 'navbar/js/script.js' %}"></script>
+   
+  </body>
+</html>
