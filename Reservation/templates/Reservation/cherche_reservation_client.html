@@ -1,0 +1,132 @@
+{% extends 'Reservation/mainClient.html' %}
+{% block content%}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Client</title>
+    
+	<!-- Demo CSS -->
+	<link rel="stylesheet" href="{% static 'table/css/demo.css' %}">
+      
+<style>
+.cd-table-container{
+  background: #fff;
+  box-shadow: 1px 2px 26px rgba(0, 0, 0, 0.2);
+  padding: 15px;
+  max-width: 720px;
+}
+/* Table Design */
+.cd-table{
+  width: 100%;
+  color: #666;
+  margin: 10px auto;
+  border-collapse: collapse;
+}
+
+.cd-table tr,
+.cd-table td{
+  border: 1px solid #ccc;
+  padding: 10px;
+}
+.cd-table th{
+  background: #017721;
+  color: #fff;
+  padding: 10px;
+}
+
+/* Search Box */
+.cd-search{
+  padding: 10px;
+  border: 1px solid #ccc;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Search Title */
+.cd-title{
+  color: #666;
+  margin: 15px 0;
+}
+</style>
+  
+  </head>
+  <body>
+    {% if msg == 1 %}
+    <main>
+      <!-- partial:index.partial.html -->
+      <section class="container cd-table-container">
+       <center> <h3> Bienvenue <span class="badge bg-success">{{client.nom}} {{client.prenom}} </span></center></h3>
+       <center> <h3> Vous avez <span class="badge bg-success"> {{ nb_total_reservation }} Reservation(s) </span></center></h3>
+      </section>
+      <!-- partial -->
+       </main>
+      <main>
+    <div class="container pb-24">
+      <div class="row">
+        <div class="col-sm">
+     <center>   <h3> Totale Reservation   :  <span class="badge bg-success">{{ nb_total_reservation }}</span>  </h3> </center>
+        </div>
+        <div class="col-sm">
+    <center>   <h3> Reservation Salles :    <alt="" width="40" height="40" class="d-inline-block align-text-top">   <span class="badge bg-warning text-dark">{{ nb_res_salle }}</span> </h3> </center> 
+         
+        </div>
+        <div class="col-sm">
+     <center>   <h3>    Reservations Tables :  <span class="badge bg-secondary">{{nb_res_table}}</span>  </h3> </center>  
+      </div>
+    </div>
+  </div>
+
+</main>
+<main>
+  
+  <h4><center> <span class="badge bg-success">  vous avez   {{ nb_total_reservation }} reservation(s) </span> </center></h4>
+  <h4><center>  {{client.nom}} vous avez reserver le salle numero  : {{ salle.numero }}   </center></h4>
+  <h4><center>  {{client.nom}} tu as reserver  : {{ nb_res_salle }} salle(s)  </center></h4>
+</main>
+{% endif  %}
+
+
+  
+{% if msg == "ne existe pas" %}
+
+<main>
+  <!-- partial:index.partial.html -->
+  <section class="container cd-table-container">
+   <center> <h3> Desole </center></h3>
+   <center> <h3> il n'ya pas de réservation pour vos numero </h3>  </center>
+  </section>
+  <!-- partial -->
+  <section class="container cd-table-container">
+   
+    <center><h3>Mais tu peut <h1>  <a class="btn btn-outline-success text-black border-4px solid green mt-auto align-self-start" href="{% url 'reservation_client' %}">Reserver Maintenant</a></h1></h3> </center>
+     
+   </section>
+   <section class="container cd-table-container">
+   
+    <center><h3>Ou Retourner a la page principale <h1>  <a class="btn btn-outline-success text-black border-4px solid green mt-auto align-self-start" href="{% url 'vos_reservation' %}">Retourner</a></h1></h3> </center>
+     
+   </section>
+   </main>
+  
+{% endif %}
+<main>
+  <!-- partial:index.partial.html -->
+  
+  <!-- partial -->
+   </main>
+
+
+
+
+
+ 
+  
+<!-- Table Search JS -->
+  
+  </body>
+</html>
+
+{% endblock %}

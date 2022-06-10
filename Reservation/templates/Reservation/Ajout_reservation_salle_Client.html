@@ -96,27 +96,41 @@ h2{
  box-shadow: 0 2px 10px rgba(0,0,0,0.3);
  width: 400px;
  margin: 10px auto;">
-        <form id="form" class="form">
+        <form id="form" class="form" method="post" action="{% url 'ajout_reservation_salle_client' %}">
+            {% csrf_token %}
             <h4> Saisisser votre information </h4>
             <div class="form-control">
                 <label for="nom">NOM</label>
-                <input type="text" id="username" placeholder="Entrer votre nom">
+                <input type="text" name ="nom" id="nom" placeholder="Entrer votre nom">
                 <small>Error Message</small>
             </div>
             <div class="form-control">
               <label for="nom">PRENOM</label>
-              <input type="text" id="username" placeholder="Entrer votre nom">
+              <input type="text" name ="prenom" id="prenom" placeholder="Entrer votre nom">
               <small>Error Message</small>
           </div>
           <div class="form-control">
-            <label for="nom">TEL</label>
-            <input type="text" id="username" placeholder="Entrer votre No tel">
+            <label for="tel">TEL</label>
+            <input type="text" name="tel" id="tel" placeholder="Entrer votre N tel">
             <small>Error Message</small>
         </div>
             <div class="form-control">
                 <label for="email">Email</label>
-                <input type="text" id="email" placeholder="Entrer votre email">
+                <input type="text" name ="email" id="email" placeholder="Entrer votre email">
                 <small>Error Message</small>
+            </div>
+            <div class="form-control">
+                <label for="date_reservation">Date de Reservation</label>
+                <input type="datetime-local" name ="date_reservation" id="date_reservation" placeholder="Entrer la date">
+                <small>Error Message</small>
+            </div>
+            <div class="form-control">
+                <label for="table">Choisissez le type de salle</label>
+                <select name="idd" class="form-control">
+                    {% for i in salles %}
+                    <option value="{{i.id}}"> {{i.type}} </option>
+                    {% endfor %}
+                  </select>
             </div>
            
             <button class="btn btn-outline-success ">Resever Maintenant</button>

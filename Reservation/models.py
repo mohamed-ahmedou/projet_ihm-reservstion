@@ -10,36 +10,50 @@ class Client(models.Model):
     tel = models.IntegerField()
     
     
+    
     def __str__(self):
         return self.nom
 
 class Salle(models.Model):
-    categorie = models.CharField(max_length=50)
+    SALLE_TYPE = (
+        ('VIP', 'vip'),
+        ('NORMAL', 'Normal')
+    )
+    numero = models.IntegerField()
+    type = models.CharField(max_length=50, choices=SALLE_TYPE)
+    
     
     def __str__(self):
-        return self.categorie
+      return f"le numero de salle est :{self.numero}  et le type : {self.type}"
+    
 
 class Table(models.Model):
-    categorie = models.CharField(max_length=50)
+    TABLE_TYPE = (
+        ('VIP', 'vip'),
+        ('NORMAL', 'Normal')
+    )
+    numero = models.IntegerField()
+    type = models.CharField(max_length=50, choices=TABLE_TYPE)
     salle = models.ForeignKey(Salle, null=True, on_delete=models.SET_NULL)
-    
+    disponiblité = models.BooleanField(default=True)
     def __str__(self):
-        return self.categorie
+        return self.type
     
 class Reservation_table(models.Model):
-    client = models.ForeignKey(Client, null=True, on_delete=models.SET_NULL)
-    table = models.ForeignKey(Table, null=True, on_delete=models.SET_NULL)
-    date_reservation = models.DateTimeField(auto_now_add=True)
+    client = models.ForeignKey(Client, on_delete=models.CASCADE)
+    table = models.ForeignKey(Table,  on_delete=models.CASCADE)
+    date_reservation = models.DateTimeField()
+    disponiblité = models.BooleanField(default=True)
     
     def __str__(self):
-        return self.table
+       return f"{self.client.nom} {self.client.prenom} a reserver la table numero {self.table.numero} dans la salle numero {self.table.salle.numero}, date de reservation: {self.date_reservation}"
   
 class Reservation_salle(models.Model):
-    client = models.ForeignKey(Client, null=True, on_delete=models.SET_NULL)
-    salle = models.ForeignKey(Salle, null=True, on_delete=models.SET_NULL)
-    date_reservation = models.DateTimeField(auto_now_add=True)
+    client = models.ForeignKey(Client,  on_delete=models.CASCADE)
+    salle = models.ForeignKey(Salle, on_delete=models.CASCADE)
+    date_reservation = models.DateTimeField()
     
     def __str__(self):
-            return self.salle
+            return f"{self.client.nom} {self.client.prenom} a reserver la salle numero {self.salle.numero}, date de reservation: {self.date_reservation}"
     
       

@@ -1,4 +1,4 @@
-{% extends 'Reservation/mainClient.html'%}
+{% extends 'Reservation/main.html'%}
 {% load static %}
 {% block content %}
 <!DOCTYPE html>
@@ -96,31 +96,27 @@ h2{
  box-shadow: 0 2px 10px rgba(0,0,0,0.3);
  width: 400px;
  margin: 10px auto;">
-        <form id="form" method="post" action="{% url 'cherche_reservation_client' %}"  class="form">
-            <div class="row">
-           
-           
-       
-           
-            
-            <center>  
-                
-            <form class="d-flex ml-3" method="POST" action="{% url 'cherche_reservation_client' %}" >
-             {% csrf_token %}
-             <div class="form-control">
-               
-                <input type="text" name ="tel" id="tel" placeholder="Numero tel">
-               
-           
-            </div>
-           
-           
-            <button class="btn btn-outline-success " type="submit">Rechercher</button>
-        </form>
-        </form>
-        </div>
-     
+ <form id="form" class="form" method="post" action="{% url 'ajout_salle' %}">
+    {% csrf_token %}
+    <h4> Saisisser votre information </h4>
+    <div class="form-control">
+        <label for="numero">Numero</label>
+        <input type="text" name ="numero" id="numero" placeholder="Ajouter le numero">
+        
     </div>
+    
+    <div class="form-control">
+        <label for="table">Choisissez le type de salle</label>
+        <select name="type" class="form-control">
+            <option value="VIP">  VIP </option>
+            <option value="NORMAL">  NORMAL </option>
+          </select>
+    </div>
+   
+    <button class="btn btn-outline-success ">Ajouter</button>
+</form>
+</div>
+
  </main>
 </body>
  

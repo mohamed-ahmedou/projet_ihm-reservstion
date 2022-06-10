@@ -74,14 +74,16 @@
     </thead>
 
     <tbody>
-        {% for item in client %}
-        <tr>
-      <td>{{item.nom}}</td>
-      <td>{{item.prenom}}</td>
-      <td>{{item.email}}</td>
-      <td>{{item.tel}}</td>>
-      </tr>
-{% endfor %}
+      {% for items in client %}
+      <tr>
+       
+        <td>{{items.nom}}</td>
+        <td>{{items.prenom}}</td>
+        <td>{{items.email}}</td>
+        <td>{{items.tel}}</td>
+        </tr>
+        {% endfor %}
+
      
     </tbody>
   </table>

@@ -1,50 +1,104 @@
 {% extends 'Reservation/main.html' %}
 {% block content%}
-<h1> Table</h1>
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
-<html>
-<head>
-    <link rel="stylesheet" href="Reservation/Table.css">
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-</head>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Table</title>
+    
+	<!-- Demo CSS -->
+	<link rel="stylesheet" href="{% static 'table/css/demo.css' %}">
+      
+<style>
+.cd-table-container{
+  background: #fff;
+  box-shadow: 1px 2px 26px rgba(0, 0, 0, 0.2);
+  padding: 15px;
+  max-width: 720px;
+}
+/* Table Design */
+.cd-table{
+  width: 100%;
+  color: #666;
+  margin: 10px auto;
+  border-collapse: collapse;
+}
 
-<body>
-  <header id="nav-wrapper">
-    <nav id="nav">
-      <div class="nav left">
-        <span class="gradient skew"><h1 class="logo un-skew"><a href="#home">Logo Here</a></h1></span>
-        <button id="menu" class="btn-nav"><span class="fas fa-bars"></span></button>
-      </div>
-      <div class="nav right">
-        <a href="#home" class="nav-link active"><span class="nav-link-span"><span class="u-nav">Home</span></span></a>
-        <a href="#about" class="nav-link"><span class="nav-link-span"><span class="u-nav">About</span></span></a>
-        <a href="#work" class="nav-link"><span class="nav-link-span"><span class="u-nav">Work</span></span></a>
-        <a href="#contact" class="nav-link"><span class="nav-link-span"><span class="u-nav">Contact</span></span></a>
-      </div>
-    </nav>
-  </header>
-  <main>
-    <section id="home">
+.cd-table tr,
+.cd-table td{
+  border: 1px solid #ccc;
+  padding: 10px;
+}
+.cd-table th{
+  background: #017721;
+  color: #fff;
+  padding: 10px;
+}
 
-    </section>
-    <section id="about">
+/* Search Box */
+.cd-search{
+  padding: 10px;
+  border: 1px solid #ccc;
+  width: 100%;
+  box-sizing: border-box;
+}
 
-    </section>
-    <section id="work">
+/* Search Title */
+.cd-title{
+  color: #666;
+  margin: 15px 0;
+}
+</style>
+  
+  </head>
+  <body>
+<h4><center>  Table  </center></h4>
+  
+ <main>
+   <div class"row">
+<center> <h3> ajouter </h3> </center>
+   </div>
+<!-- partial:index.partial.html -->
+<section class="container cd-table-container">
+  <h2 class="cd-title">Table :</h2>
+  <input type="text" class="cd-search table-filter" data-table="order-table" placeholder="Chercher" />
 
-    </section>
-    <section id="contact">
+  <table class="cd-table order-table table">
+    <thead>
+      <tr>
+        <th>Numero</th>
+        <th>Type</th>
+        <th>Salle</th>
+        <th>Status</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+  
+    <tbody>
+      {% for items in table %} 
+      <tr>
+       
+        <td>{{items.numero}}</td>
+        <td>{{items.type}}</td>
+        <td>{{items.salle}}</td>
+      
+        </tr>
+        {% endfor %}  
 
-    </section>
-  </main>
+     
+    </tbody>
+  </table>
 
-</body>
-
+</section>
+<!-- partial -->
+ </main>
+ 
+  
+<!-- Table Search JS -->
+  
+  </body>
 </html>
 
-
-
-{%endblock%}
+{% endblock %}

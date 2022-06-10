@@ -14,8 +14,10 @@ urlpatterns = [
     path('ajout_reservation_salle_client/',views.ajout_reservation_salle_client, name="ajout_reservation_salle_client"),
     path('ajout_reservation_table_client/',views.ajout_reservation_table_client, name="ajout_reservation_table_client"),
     path('reservation_client/',views.reservation_client, name="reservation_client"),
-    path('afficher_client/',views.afficher_client, name="afficher_client"),
-    
+    path('vos_reservation/',views.vos_reservation, name="vos_reservation"),
+    path('cherche_reservation_client/',views.cherche_reservation_client, name="cherche_reservation_client"),
+    path('ajout_salle/',views.ajout_salle, name="ajout_salle"),
+  
     
 
 ]
