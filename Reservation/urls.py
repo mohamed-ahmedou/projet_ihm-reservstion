@@ -17,8 +17,13 @@ urlpatterns = [
     path('vos_reservation/',views.vos_reservation, name="vos_reservation"),
     path('cherche_reservation_client/',views.cherche_reservation_client, name="cherche_reservation_client"),
     path('ajout_salle/',views.ajout_salle, name="ajout_salle"),
-  
+    path('ajout_table/',views.ajout_table, name="ajout_table"),
+    path('Billet/', views.Billet, name="Billet"),
+    path('Billet_salle/<str:myid>', views.Billet_salle, name="Billet_salle"),
+    path('Billet_table/<str:myid>/', views.Billet_table, name="Billet_table"),
+    path('impression_table/<str:myid>',views.impression_table, name="impression_table"),
+    path('impression_salle/',views.impression_salle, name="impression_salle"),
+    path('login/', views.login, name="login"),
     
-
 ]
 

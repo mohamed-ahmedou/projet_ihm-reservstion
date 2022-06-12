@@ -1,0 +1,30 @@
+{% extends 'Reservation/mainClient.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+
+
+
+<main>
+    <!-- partial:index.partial.html -->
+    <section class="container cd-table-container">
+     <center> <h3>  </center></h3>
+     <center> <h3> Vous avez reserver avec   <button type="button" class="btn btn-labeled btn-success">
+        <span class="btn-label"><i class="fa fa-check"></i></span>Succes</button> </h3>  </center>
+    </section>
+    <main>
+    <!-- partial -->  
+    <section class="container cd-table-container">
+     
+      <center><h3> vous pouvez imprimer le billet de reservation  <h1>  <a class="btn btn-outline-success text-black border-4px solid green mt-auto align-self-start" href="{% url 'Billet_salle/{{myid}}' %}">Imprimer Maintenant</a></h1></h3> </center>
+       
+     </section>
+    </main>
+     <section class="container cd-table-container">
+        
+      <center><h3> <h1>  <a class="btn btn-outline-success text-black border-4px solid green mt-auto align-self-start" href="{% url 'vos_reservation' %}">Retourner</a></h1></h3> </center>
+       
+     </section>
+     </main>
+    
+     {% endblock %}

@@ -2,6 +2,7 @@
 {% load static %}
 {% block content %}
 <!DOCTYPE html>
+
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -19,35 +20,35 @@
  
   
  <main>
-
-     <!-- DEMO HTML -->
-   <!--   CARD 2-->
-    <div class="row">
-      <!--ADD CLASSES HERE d-flex align-items-stretch-->
-      <div class="col-lg-4 mb-4 d-flex align-items-stretch">
-        <div class="card" width="100">
-          <img src="{% static '/img _reservation/res11.jpg' %}" class="card-img-top" alt="Card Image">
-          <div class="card-body d-flex flex-column">
-            <h5 class="card-title">RESERVER TOUTE LA SALLE </h5>
-           <a href="{% url 'ajout_reservation_salle_client' %}"  class="btn btn-outline-success text-green mt-auto align-self-start">Reserver Maintenant</a>
-          </div>
-        </div>
-      </div>
-      <!--   CARD 2-->
-      <!--ADD CLASSES HERE d-flex align-items-stretch-->
-      <div class="col-lg-4 mb-4 d-flex align-items-stretch">
-        <div class="card">
-          <a href="{% url 'reservation_client' %}" > <img src="{% static '/img _reservation/res7.jpg' %}" alt="" width="400"  height="293" >
-          </a>    <div class="card-body d-flex flex-column">
-            <h5 class="card-title">RESERVER DES TABLES</h5>
-           <a href="{% url 'ajout_reservation_table_client' %}" class="btn btn-outline-success text-green mt-auto align-self-start">Reservre Maintenant</a>
-          </div>
-        </div>
-      </div>
-     
-    </div>
   
-</section>
+  <div class="jumbotron">
+    <div class="row w-100">
+            <div class="col-md-6">
+                <div class="card border-info mx-sm-1 p-3">
+                  
+                    <div class="card border-info shadow text-info p-3 my-card" > <img src="{% static '/img _reservation/res21.png' %}" alt="" width="20" height="20" class="d-inline-block align-text-top">
+                      <div class="text-info text-center mt-3"><h5>RESERVER TOUTE LA SALLE </h5></div>
+         <center>             <a href="{% url 'ajout_reservation_salle_client' %}" class="btn btn-outline-success text-green mt-auto align-self-start">Reservre Maintenant</a>
+         
+                    </div>
+                    <img src="{% static '/img _reservation/res11.jpg' %}" class="card-img-top" alt="Card Image">
+           
+                    <div class="text-info text-center mt-2"><h1> </h1></div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card border-success mx-sm-1 p-3">
+                    <div class="card border-success shadow text-success p-3 my-card"><img src="{% static '/img _reservation/res23.png' %}" alt="" width="20" height="20" class="d-inline-block align-text-top">
+                      <div class="text-info text-center mt-3"><h5>RESERVER DES TABLES </h5></div>
+                      <center> <a href="{% url 'ajout_reservation_table_client' %}" class="btn btn-outline-success text-green mt-auto align-self-start">Reservre Maintenant</a>
+         
+                    </div>
+                    <img src="{% static '/img _reservation/res7.jpg' %}" class="card-img-top" alt="Card Image">
+           
+                    <div class="text-success text-center mt-3"><h4> </h4></div>
+                    <div class="text-success text-center mt-2"><h1></h1></div>
+                </div>
+            </div>
      <!-- End Demo HTML -->
  </main>
  

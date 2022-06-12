@@ -9,6 +9,8 @@ from datetime import *
 from django.db.models import Count
 from django.shortcuts import render
 
+import Reservation
+
 
 from .models import * 
 
@@ -48,6 +50,17 @@ def client(request):
     client = Client.objects.all()
     return render(request, 'Reservation/Client.html',{'client':client})
 
+def ajout_table(request):
+    if request.method=="POST":   
+        numero = request.POST['numero']
+        type = request.POST['type']
+        iddd = request.POST['idd']
+        salle = Salle.objects.get(id=iddd)
+        c = Table.objects.create(numero=numero, type=type, salle=salle )
+        c.save()
+        return redirect("/table")
+    salles = Salle.objects.all()
+    return render(request, 'Reservation/ajout_table.html',{'salles' : salles})
 
 def salle(request):
     salle = Salle.objects.all
@@ -100,9 +113,9 @@ def ajout_reservation_table_client(request):
         client.save()
         table.disponiblité = False
         table.save()
-        r.save()
+        r.save() 
         
-        return redirect("/ajout_reservation_table_client")  
+        return redirect("/impression_table/{r.id}")  
     tables = Table.objects.all()
     return render(request,'Reservation/Ajout_reservation_table_Client.html',{'tables' : tables} )
 
@@ -121,7 +134,7 @@ def ajout_reservation_salle_client(request):
         client.save()
         r.save()
         
-        return redirect("/ajout_reservation_salle_client")  
+        return redirect("/impression_salle")  
     salles = Salle.objects.all()
     return render(request, 'Reservation/Ajout_reservation_salle_Client.html',{'salles':salles})
 
@@ -141,25 +154,23 @@ def cherche_reservation_client(request):
                 print(client.nom) 
                 print(client.prenom)
                 
-                salle = Reservation_salle.objects.filter(client=client).count()
+                salle = Reservation_salle.objects.filter(client=client)
                 print(salle.numero)
-                print(table.numero)
-                nb_res_salle = salle.count()
+                print(salle.type)
+                # nb_res_salle = salle.count()
                 
-                table = Reservation_table.objects.filter(client=client).count()
+                table = Reservation_table.objects.filter(client=client)
                 print(table.numero)
                 print(table.salle.numero)
-                nb_res_table=table.count()
+                # nb_res_table=table.count()
                 
-                nb_total_reservation = nb_res_salle + nb_res_table
+                # nb_total_reservation = nb_res_salle + nb_res_table
                
                 reservation = {'tel' : tel,
                                 'client' : client,
                                 'salle' : salle,
-                                'nb_res_salle': nb_res_salle,
                                 'table' : table,
-                                'nb_res_table' : nb_res_table,
-                                'nb_total_reservation' : nb_total_reservation,
+                                # 'nb_total_reservation' : nb_total_reservation,
                                 'msg' : 1}
                 return render(request, 'Reservation/cherche_reservation_client.html',reservation)
            except:
@@ -170,5 +181,42 @@ def cherche_reservation_client(request):
            
                 
      return render(request, 'Reservation/cherche_reservation_client.html')
-# Create your views here.
+ 
+def Billet(request):
+ 
+    return render (request, 'Reservation/Billet.html')
 
+def Billet_salle(request,myid):
+    billet = Reservation_salle.objects.get(id = myid)
+    date = datetime.now 
+    return render (request, 'Reservation/Billet_salle.html',{'billet':billet,'date':date})
+
+def Billet_table(request,myid):
+    billet = Reservation_table.objects.get(id = myid)
+    date = datetime.now 
+    return render (request, 'Reservation/Billet_table.html',{'billet':billet,'date':date})
+
+
+def impression_table(request, myid):
+    
+    return render (request, 'Reservation/impression_table.html',{'myid': myid})
+
+def impression_salle(request):
+    
+    return render (request, 'Reservation/impression_salle.html')
+
+
+def login(request):
+    if request.method == "POST":
+        user = request.POST['username']
+        passs = request.POST['password']
+        user = authenticate(username=user, password=passs)
+        if user is not None:
+            if user.is_superuser:
+                
+                return redirect("/home")
+        else:   
+            msg = "Les données sont  erronés,ressayer"
+            return render(request, "Reservation/Login.html", {"msg":msg})
+    
+    return render (request, 'Reservation/Login.html')
