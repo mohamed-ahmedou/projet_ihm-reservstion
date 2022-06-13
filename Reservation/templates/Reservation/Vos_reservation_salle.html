@@ -99,14 +99,14 @@ h2{
  width: 400px;
  margin: 10px auto;">
 <div class="card border-success mx-sm-1 p-3">
-        <form id="form" method="post" action="{% url 'cherche_reservation_client' %}"  class="form">
+        <form id="form" method="post" action="{% url 'cherche_reservation_client_salle' %}"  class="form">
             <div class="row">
            
                
             
             <center>  
                 <div class="card border-success p-3  " style="width: 290px"  >  
-            <form class="d-flex ml-3" method="POST" action="{% url 'cherche_reservation_client' %}" >
+            <form class="d-flex ml-3" method="POST" action="{% url 'cherche_reservation_client_salle' %}" >
              {% csrf_token %}
              <div class="form-control">
                
