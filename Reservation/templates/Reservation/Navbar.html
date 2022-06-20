@@ -25,16 +25,17 @@
 
         <!-- site menu/nav -->
         <ul>
-          <li><a href="{% url 'home'%}" class="btn btn-outline-success">home</a></li>
-          <li><a href="#" class="btn btn-outline-success">Reservation</a></li>
-          <li><a href="{% url 'salle' %}"class="btn btn-outline-success">Salle</a></li>
-          <li><a href="{% url 'table' %}" class="btn btn-outline-success">Table</a></li>
-          <li><a href="{% url 'client' %}" class="btn btn-outline-success">Client</a></li>
-
+          <li><a href="{% url 'home'%}">home</a></li>
+          <li><a href="{% url 'reservation' %}" >Reservation</a></li>
+          <li><a href="{% url 'salle' %}">Salle</a></li>
+          <li><a href="{% url 'table' %}" >Table</a></li>
+          <li><a href="{% url 'client' %}" >Client</a></li>
+            <!--class="btn btn-outline-success">-->
         </ul>
         <ul><li> </li> </ul>
-        
-        <ul> <li><a href="{% url 'client_home' %}" class="btn btn-outline-success">Deconnecter</a></li> </ul>
+        <!--<ul> <li><a href="{% url 'client_home' %}" class="btn btn-outline-success">Deconnecter</a></li> </ul>
+       -->
+        <ul> <li><a href="{% url 'client_home' %}">Deconnecter</a></li> </ul>
        
       
       

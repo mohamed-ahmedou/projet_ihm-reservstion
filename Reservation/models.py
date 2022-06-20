@@ -34,7 +34,7 @@ class Table(models.Model):
     )
     numero = models.IntegerField()
     type = models.CharField(max_length=50, choices=TABLE_TYPE)
-    salle = models.ForeignKey(Salle, null=True, on_delete=models.SET_NULL)
+    salle = models.ForeignKey(Salle, null=True, on_delete=models.CASCADE)
     disponiblité = models.BooleanField(default=True)
     def __str__(self):
         return self.type

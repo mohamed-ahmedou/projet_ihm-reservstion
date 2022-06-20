@@ -6,7 +6,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Table</title>
+    <title>Client</title>
     
 	<!-- Demo CSS -->
 	<link rel="stylesheet" href="{% static 'table/css/demo.css' %}">
@@ -54,23 +54,24 @@
   
   </head>
   <body>
-<h4><center>  Table  </center></h4>
+<h4><center>  Reservation salle  </center></h4>
   
- <main><center>
+ <main>
+  <center>
   <div class="row" >
     <div class="col-sm">
     </div>
     <div class="col-sm">
     <center>
-    <h6 class=""><a class="btn btn-outline-success text-black border-4px solid green mt-auto align-self-start" href="{% url 'ajout_table' %}">Ajouter une table</a></h6>
+    <h6 class=""><a class="btn btn-outline-success text-black border-4px solid green mt-auto align-self-start" href="{% url 'ajout_reservation_salle' %}">Ajouter une reservation salle</a></h6>
     </center>
   </div>
   <div class="col-sm">
     <center>
      
-        <form class="d-flex ml-3" method="POST" action="{% url 'rechercher_table'%}" >
+        <form class="d-flex ml-3" method="POST" action="{% url 'rechercher_reservation_salle'%}" >
           {% csrf_token %}
-          <input style="width: 160px; height:47px; border-color: green text-black border-11px solid" placeholder="Numero table"  type="search" aria-label="search"id="numero" name="numero">
+          <input style="width: 160px; height:47px; border-color: green text-black border-11px solid" placeholder="Chercher reservation"  type="search" aria-label="search"id="tel" name="tel">
           
           <button class= "btn btn-outline-success text-black border-4px solid green background-color-green" type="submit"> Chercher </button>
         </form> </center>
@@ -78,39 +79,42 @@
   <div class="col-sm"> </div>
 </div>
 <!-- partial:index.partial.html -->
+<div class="row">
+  
 <section class="container cd-table-container">
  
-  
+
   <table class="cd-table order-table table">
     <thead>
       <tr>
-        <th>Numero</th>
-        <th>Type</th>
+        <th>Client</th>
         <th>Salle</th>
-        <th>Status</th>
+        <th>Type</th>
+        <th>Date </th>
         <th>Action</th>
+        
       </tr>
     </thead>
-  
+
     <tbody>
-      {% for items in table %} 
+   
       <tr>
        
-        <td>{{items.numero}}</td>
-        <td>{{items.type}}</td>
-        <td>{{items.salle}}</td>
-        <td><a  href="{% url 'modifier_table' items.id %}" > <i class="fas fa-edit"></i></a> 
-          <a class="text-danger" href="/supprimer_table/{{items.id}}/" ><i class="fas fa-trash-alt"></i></a>  </td>
-           
+        <td>{{client.nom}} {{client.prenom}}</td>
+        <td>{{salle.salle.numero}}</td>
+        <td>{{salle.salle.type}}</td>
+        <td>{{salle.date_reservation}}</td>
         </tr>
-        {% endfor %}  
+      
 
      
     </tbody>
   </table>
 
-</section>
+</div>
 
+</section>
+<!-- partial -->
  </main>
  
   
