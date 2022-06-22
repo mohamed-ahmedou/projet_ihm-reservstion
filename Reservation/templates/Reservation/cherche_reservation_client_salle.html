@@ -81,8 +81,15 @@
     <section class="container cd-table-container" >
    <center> <div class="card border-success mx-sm-1 p-3" style="width: 560px;">
         <center> <h5> <div class="text-success text-center mt-3" > Vous avez  reserver  la salle numero <span class="badge bg-success">{{salle.salle.numero}}</span> </div> </h4> </center>
-    </div>
-      
+      </div>
+      <section class="container cd-table-container" >
+        <form action="/Billet_salle/{{iddd}}/" method="post">
+      <a href="/Billet_salle/{{iddd}}/" class="btn btn-outline-success text-success border-success"> Imprimer le ticket </a>
+    </form>  
+    </section>
+      <section class="container cd-table-container" >
+        <a href="/vos_reservation_salle" class="btn btn-outline-success text-success border-success"> Retourner </a>
+        </section>
       <!-- partial -->
        </main>
   

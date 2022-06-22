@@ -101,13 +101,13 @@ h2{
     <h4> Ajouter une table </h4>
     <div class="form-control">
         <label for="numero">Numero</label>
-        <input type="text" name ="numero" id="numero" placeholder="Ajouter le numero">
+        <input type="text" name ="numero" id="numero" placeholder="Ajouter le numero" required>
         
     </div>
     
     <div class="form-control">
         <label for="table">Choisissez le type de table</label>
-        <select name="type" class="form-control">
+        <select name="type" class="form-control" required>
             <option value="VIP">  VIP </option>
             <option value="NORMAL">  NORMAL </option>
           </select>
@@ -115,7 +115,7 @@ h2{
     
     <div class="form-control">
         <label for="table">Choisissez le type de salle</label>
-        <select name="idd" class="form-control">
+        <select name="idd" class="form-control" required>
             {% for i in salles %}
             <option value="{{i.id}}"> {{i.numero}} {{i.type}}</option>
             {% endfor %}

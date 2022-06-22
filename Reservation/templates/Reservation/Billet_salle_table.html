@@ -347,16 +347,17 @@ footer .end {
           <div class="container">
               <div class="details clearfix">
                   <div class="client left">
-                      <p class="name">Nom client : {{billet.client.nom}}  </p>
-                      <p class="name">Prenom : {{billet.client.prenom}}</p>
-                      <p class="name">Numero tel : {{billet.client.tel}}</p>
-                      <p class="name"> Email : {{billet.client.email}}  </p>
+                      <p class="name">Nom client : {{billet_salle.client.nom}}  </p>
+                      <p class="name">Prenom : {{billet_salle.client.prenom}}</p>
+                      <p class="name">Numero tel : {{billet_salle.client.tel}}</p>
+                      <p class="name"> Email : {{billet_salle.client.email}}  </p>
                   </div>
                     <div class="client right">
                      
-                    <p class="name">Date du Reservation : {{ billet.date_reservation}}  </p>
-                      <p class="name">  Salle : {{billet.salle.numero}}<br> </p>
-                      <p class="name">    Type du Salle : {{billet.salle.type}}<br> </p>
+                    <p class="name">Date du Reservation : {{ billet_salle.date_reservation}}  </p>
+                      <p class="name">  Salle : {{billet_salle.salle.numero}}<br> </p>
+                      <p class="name">  Table : {{billet_table.table.numero}} dans La salle numero{{billet_table.table.salle.numero}} <br> </p>
+                      <p class="name">    Type du Salle : {{billet_salle.salle.type}}<br> </p>
                    
                   </div>
                       
@@ -374,10 +375,10 @@ footer .end {
                   </thead>
                   <tbody>
                       <tr>
-                          <td class="qty"> <h3>{{billet.client.nom}} {{billet.client.prenom}}</h3></td>
+                          <td class="qty"> <h3>{{billet_salle.client.nom}} {{billet_salle.client.prenom}}</h3></td>
                           <td class="desc"><h3>image du salle</h3><br><img src="{% static '/img _reservation/res11.jpg' %}" width="21%" </td>
-                          <td class="unit"><h3> {{billet.client.nom}} a réservé la Salle numero  {{billet.salle.numero}} le type est {{billet.salle.type}} , date de reservation  {{billet.date_reservation}}</h3></td>
-                          <td class="total"><h3>{{billet.date_reservation}}  </h3></td>
+                          <td class="unit"><h3> {{billet_salle.client.nom}} a réservé la Salle numero  {{billet_salle.salle.numero}} le type est {{billet_salle.salle.type}} , date de reservation  {{billet_salle.date_reservation}}</h3></td>
+                          <td class="total"><h3>{{billet_salle.date_reservation}}  </h3></td>
                       </tr>
                      
                      

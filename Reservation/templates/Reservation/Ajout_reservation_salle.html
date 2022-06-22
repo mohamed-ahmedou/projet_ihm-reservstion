@@ -101,32 +101,32 @@ h2{
             <h4> Saisisser votre information </h4>
             <div class="form-control">
                 <label for="nom">NOM</label>
-                <input type="text" name ="nom" id="nom" placeholder="Entrer votre nom">
+                <input type="text" name ="nom" id="nom" placeholder="Entrer votre nom" required   >
                 <small>Error Message</small>
             </div>
             <div class="form-control">
               <label for="nom">PRENOM</label>
-              <input type="text" name ="prenom" id="prenom" placeholder="Entrer votre nom">
+              <input type="text"  name ="prenom" id="prenom" placeholder="Entrer votre prenom" required >
               <small>Error Message</small>
           </div>
           <div class="form-control">
             <label for="tel">TEL</label>
-            <input type="text" name="tel" id="tel" placeholder="Entrer votre N tel">
+            <input type="number" name="tel" id="tel" placeholder="Entrer votre N tel" required >
             <small>Error Message</small>
         </div>
             <div class="form-control">
                 <label for="email">Email</label>
-                <input type="text" name ="email" id="email" placeholder="Entrer votre email">
+                <input type="text" name ="email" id="email" placeholder="Entrer votre email" required>
                 <small>Error Message</small>
             </div>
             <div class="form-control">
                 <label for="date_reservation">Date de Reservation</label>
-                <input type="datetime-local" name ="date_reservation" id="date_reservation" placeholder="Entrer la date">
+                <input type="datetime-local" name ="date_reservation" id="date_reservation" placeholder="Entrer la date" required>
                 <small>Error Message</small>
             </div>
             <div class="form-control">
                 <label for="table">Choisissez le type de salle</label>
-                <select name="idd" class="form-control">
+                <select name="idd" class="form-control" required>
                     {% for i in salles %}
                     <option value="{{i.id}}"> {{i.type}} </option>
                     {% endfor %}

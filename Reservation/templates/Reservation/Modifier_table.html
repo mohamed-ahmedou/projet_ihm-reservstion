@@ -91,43 +91,43 @@ h2{
   <body>
  
   
- <main>
- <div style=" border-radius: 5px;
- box-shadow: 0 2px 10px rgba(0,0,0,0.3);
- width: 400px;
- margin: 10px auto;">
- <form id="form" class="form" method="post" action="">
-    {% csrf_token %}
-    <h4> Ajouter une table </h4>
-    <div class="form-control">
-        <label for="numero">Numero</label>
-        <input type="text" name ="numero" id="numero" valu="{{t.numero}}" placeholder="Ajouter le numero">
+    <main>
+    <div style=" border-radius: 5px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+    width: 400px;
+    margin: 10px auto;">
+    <form id="form" class="form" method="post" action=" /modifier_table/{{t.id}}/">
+       {% csrf_token %}
+       <h4> Ajouter une salle </h4>
+       <div class="form-control">
+           <label for="numero">Numero</label>
+           <input type="text" name ="numero" id="numero" value="{{t.numero}}" placeholder="Ajouter le numero">
+           
+       </div>
+       
+       <div class="form-control">
+           <label for="table">Modifier le type de table</label>
+           <select name="type" class="form-control" id="type" value="{{t.type}}">
+               <option value="NORMAL"> NORMAL  </option>
+               <option value="VIP"> VIP</option>
+             </select>
+       </div>
+       <div class="form-control">
+        <label for="table">Modifier le salle</label>
+        <select name="idd" class="form-control" id="idd">
+        {% for i in s %}
         
-    </div>
-    
-    <div class="form-control">
-        <label for="table">Choisissez le type de table</label>
-        <select name="type" class="form-control" id="type" value="{{t.type}}">
-            <option value="VIP">  VIP </option>
-            <option value="NORMAL">  NORMAL </option>
+            <option value="{{i.id}}"> {{i.type}} {{i.numero}} </option>
+            {% endfor %}
           </select>
     </div>
-    
-    <div class="form-control">
-        <label for="table">Choisissez le type de salle</label>
-        <select name="idd" class="form-control">
-            {% for i in s %}
-            <option value="{{i.id}}"> {{i.numero}} {{i.type}}</option>
-            {% endfor %}
-        </select>
-    </div> 
+      
+       <button type="submit" class="btn btn-outline-success ">Modifier</button>
+   </form>
+   </div>
    
-    <button class="btn btn-outline-success ">Ajouter</button>
-</form>
-</div>
-
- </main>
-</body>
+    </main>
+   </body>
  
       
 

@@ -82,8 +82,11 @@
    <center> <div class="card border-success mx-sm-1 p-3" style="width: 560px;">
         <center> <h5> <div class="text-success text-center mt-3" > Vous avez  reserver la table numero <span class="badge bg-success">{{table.table.numero}}</span> dans la salle numero <span class="badge bg-success">{{table.table.salle.numero}}</span> </div> </h4> </center>
     </div>
-      
-      <!-- partial -->
+    <section class="container cd-table-container" >
+    <form action="/Billet_table/{{iddd}}/" method="post">
+      <a href="/Billet_table/{{iddd}}/" class="btn btn-outline-success text-success border-success"> Imprimer le ticket </a>
+    </section>
+    </form>  <!-- partial -->
        </main>
   
 
@@ -99,7 +102,7 @@
     <h1> {{salle.numero}}</h1>
     <h1> {{client.nom}}</h1>
    <center> <h3> Desole </center></h3>
-   <center> <h3> il n'ya pas de réservation {{client.nom}} pour vos numero </h3>  </center>
+   <center> <h3> il n'ya pas de réservation pour vos numero </h3>  </center>
   </section>
   <!-- partial -->
   <section class="container cd-table-container">

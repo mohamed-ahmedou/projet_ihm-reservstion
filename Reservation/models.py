@@ -37,7 +37,7 @@ class Table(models.Model):
     salle = models.ForeignKey(Salle, null=True, on_delete=models.CASCADE)
     disponiblité = models.BooleanField(default=True)
     def __str__(self):
-        return self.type
+        return f"{self.numero} {self.type}"
     
 class Reservation_table(models.Model):
     client = models.ForeignKey(Client, on_delete=models.CASCADE)

@@ -101,22 +101,22 @@ h2{
     <h4> Ajouter un client </h4>
     <div class="form-control">
         <label for="nom">Nom</label>
-        <input type="text" name ="nom" id="nom" placeholder="Ajouter le nom">
+        <input type="text" name ="nom" id="nom" placeholder="Ajouter le nom" required >
         
     </div>
     <div class="form-control">
         <label for="prenom">Prenom</label>
-        <input type="text" name ="prenom" id="prenom" placeholder="Ajouter le prenom">
+        <input type="text" name ="prenom" id="prenom" placeholder="Ajouter le prenom" required >
         
     </div>
     <div class="form-control">
         <label for="email">Email</label>
-        <input type="text" name ="email" id="email" placeholder="Ajouter email">
+        <input type="email" name ="email" id="email" placeholder="Ajouter email" required  >
         
     </div>
     <div class="form-control">
         <label for="tel">Tel</label>
-        <input type="text" name ="tel" id="tel" placeholder="Ajouter le N tel">
+        <input type="number" name ="tel" id="tel" placeholder="Ajouter le N tel"  required>
         
     </div>
     
@@ -133,7 +133,9 @@ h2{
 
 
 </html>
-
+<script> 
+  
+</script>
 {% endblock%}
 
 

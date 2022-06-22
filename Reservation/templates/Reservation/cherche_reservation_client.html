@@ -98,9 +98,10 @@
     <section class="container cd-table-container" >
     <div class="col-sm">
     <center>  <div class="card border-success mx-sm-1 p-3" style="width: 596px;" >
-          <div class="card border-success shadow text-success p-3 my-card" > <h5> Vous Pouvez imprimer le billet ou le ticket de reservation      <center><span class="badge bg-success"><a class="btn btn-outline-success text-white border-4px solid green mt-auto align-self-start" href="/Billet_salle/{{idd}}/">Imprimer Maintenant</a> </span> </div></h1></h3> </center>
-          </h4> </div>
-            
+      <form action="/Billet_salle_table/{{id_sa}}/" method="post">
+          <center><a class="btn btn-outline-success text-success border-success" href="/Billet_salle_table/{{id_sa}}/">Imprimer Maintenant</a> </span> </div></h1></h3> </center>
+          
+        </form>
      </div>
   </div>
 </div>

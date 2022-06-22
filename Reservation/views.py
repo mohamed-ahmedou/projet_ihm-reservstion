@@ -101,16 +101,12 @@ def reservation_salle(request):
     reserv_salle = Reservation_salle.objects.all()
     return render (request, 'Reservation/Reservation_salle.html',{'reserv_salle' : reserv_salle})
 
-def reservation(request):
-    reserv_salle = Reservation_salle.objects.all()
-    reserv_table = Reservation_table.objects.all()
-    context = {'reserv_salle' : reserv_salle,
-               'reserv_table' : reserv_table}
-    return render (request, 'Reservation/Reservation.html',context)
+
  
 
 def reservation_table(request):
-    return render(request, 'Reservation/Reservation_Table.html')
+    reserv_table = Reservation_table.objects.all()
+    return render(request, 'Reservation/Reservation_Table.html',{'reserv_table' : reserv_table})
 
 def ajout_reservation_table(request):
     if request.method=="POST":   
@@ -189,6 +185,35 @@ def rechercher_reservation_salle(request):
             return render (request , 'Reservation/Rechercher_reservation_salle.html', {})
     else:    
         return render (request , 'Reservation/Rechercher_reservation_salle.html', {})
+    
+def rechercher_reservation_table(request):
+    if request.method=="POST":
+        tel = request.POST['tel']     
+        try:
+            
+           client = Client.objects.get(tel=tel)
+           
+           table = Reservation_table.objects.get(client=client)
+           print(table.table.numero)
+           date_s = Reservation_table.objects.get(client=client)
+           print(date_s.date_reservation)
+           cl = Reservation_table.objects.get(client=client)
+           print(cl.client.nom)
+           idd = table.id
+           reservation = {'tel' : tel,
+                        'client' : client,
+                        'tel' : tel,                             
+                        'table' : table,                             
+                        'date_s' : date_s,
+                        'cl' : 'cl',
+                        'idd' : idd }
+           
+           return render (request , 'Reservation/Rechercher_reservation_table.html',reservation )
+          
+        except:
+            return render (request , 'Reservation/Rechercher_reservation_table.html', {})
+    else:    
+        return render (request , 'Reservation/Rechercher_reservation_table.html', {})
     
 def rechercher_table(request):
     if request.method=="POST":
@@ -272,7 +297,7 @@ def modifier_table(request, iddd):
        t.salle = salle
        t.save()
        return redirect("/table") 
-    s = Salle.objects.all()
+    s =Salle.objects.all()
     return render(request, 'Reservation/Modifier_table.html', {'t': t},{'s' : s})
 
 def supprimer_table(request, myid):
@@ -280,7 +305,19 @@ def supprimer_table(request, myid):
     table.delete()
     return redirect("/table") 
 
+def supprimer_reservation_salle(request, myid):
+    res = Reservation_salle.objects.filter(id=myid)
+    res.delete()
+    return redirect("/reservation_salle")
+  
+def supprimer_reservation_table(request, myid):
+    res = Reservation_table.objects.filter(id=myid)
+    res.delete()
+    return redirect("/reservation_table")  
 
+def reservation(request):
+    
+    return render( request, 'Reservation/Reservation.html')
 
  ##-----------------------------------fin view partie admin ou agent -----------------------------------## 
 
@@ -359,7 +396,7 @@ def cherche_reservation_client(request):
                 print(client.nom) 
                 print(client.prenom)
                
-                if Reservation_salle.objects.get(client=client) and Reservation_table.objects.get(client=client): 
+                if Reservation_table.objects.get(client=client) and Reservation_salle.objects.get(client=client): 
                     
                     table = Reservation_table.objects.get(client=client)
                     print(table.table.numero)
@@ -370,7 +407,13 @@ def cherche_reservation_client(request):
                     print(salle.salle.numero)
                     date_s = Reservation_salle.objects.get(client=client)
                     print(date_s.date_reservation)
-                    idd = salle.id
+                    
+                    idd = Reservation_table.objects.get(client=client) 
+                    iddd = (idd.id) 
+                    id_s = Reservation_salle.objects.get(client=client) 
+                    id_sa = (id_s.id)
+                    
+                    
                     reservation = {'tel' : tel,
                                 'client' : client,
                                 'table' : table,                             
@@ -378,6 +421,9 @@ def cherche_reservation_client(request):
                                 'salle' : salle,                             
                                 'date_s' : date_s,
                                 'idd' : idd,
+                                'iddd' : iddd,
+                                 'id_s' : id_s,
+                                'id_sa' : id_sa,
                                 'msg' : 1 }
                      
                     return render(request, 'Reservation/cherche_reservation_client.html',reservation)
@@ -409,12 +455,13 @@ def cherche_reservation_client_table(request):
                     print(table.table.salle.numero)
                     date = Reservation_table.objects.get(client=client)
                     print(date.date_reservation)
-                   
-                    
+                    idd = Reservation_table.objects.get(client=client)
+                    iddd = idd.id
                     reservation = {'tel' : tel,
                                 'client' : client,
                                 'table' : table,                             
                                 'date' : date,
+                                'iddd' : iddd,
                                 'msg' : 1}
                      
                     return render(request, 'Reservation/cherche_reservation_client_table.html',reservation)
@@ -445,12 +492,15 @@ def cherche_reservation_client_salle(request):
                     print(salle.salle.numero)
                     date = Reservation_salle.objects.get(client=client)
                     print(date.date_reservation)
-                   
+                    idd = Reservation_salle.objects.get(client=client)
+                    iddd = (idd.id)
                     
                     reservation = {'tel' : tel,
                                 'client' : client,
                                 'salle' : salle,                             
                                 'date' : date,
+                                'idd' : idd,
+                                'iddd' : iddd,
                                 'msg' : 1}
                      
                     return render(request, 'Reservation/cherche_reservation_client_salle.html',reservation)
@@ -479,7 +529,24 @@ def Billet_table(request,myid):
     date = datetime.now 
     return render (request, 'Reservation/Billet_table.html',{'billet':billet,'date':date})
 
-
+def Billet_salle_table(request,myid):
+    try:
+       if Reservation_salle.objects.get(id=myid) :
+          billet_salle = Reservation_salle.objects.get(id=myid)
+          print(billet_salle.client.nom)
+          print(billet_salle.client.prenom)
+          print(billet_salle.salle.numero)
+          date = datetime.now 
+        
+          context = {'billet_salle' : billet_salle,
+                     'date' : date
+                    }
+          return render (request, 'Reservation/Billet_salle_table.html',context)
+       return render (request, 'Reservation/Billet_salle_table.html',context)
+    
+    except:
+        return render (request, 'Reservation/Billet_salle_table.html',{})
+        
 def impression_table(request):
     
     return render (request, 'Reservation/impression_table.html')
@@ -490,6 +557,10 @@ def impression_salle(request):
 
 def Vos_reserv(request):
     return render(request, 'Reservation/Vos_reser.html')
+
+
+def contactez_nous(request):
+    return render(request, 'Reservation/Contactez_nous.html')
 
 def login(request):
     if request.method == "POST":

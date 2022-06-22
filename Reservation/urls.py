@@ -24,6 +24,7 @@ urlpatterns = [
     path('Billet/', views.Billet, name="Billet"),
     path('Billet_salle/<int:myid>/', views.Billet_salle, name="Billet_salle"),
     path('Billet_table/<int:myid>/', views.Billet_table, name="Billet_table"),
+    path('Billet_salle_table/<int:myid>/', views.Billet_salle_table, name="Billet_salle_table"),
     path('impression_table/',views.impression_table, name="impression_table"),
     path('impression_salle/',views.impression_salle, name="impression_salle"),
     path('login/', views.login, name="login"),
@@ -39,12 +40,19 @@ urlpatterns = [
     path('impression_salle_admin/<int:myid>/',views.impression_salle_admin, name="impression_salle_admin"),
     path('impression_table_admin/',views.impression_table_admin, name="impression_table_admin"),
     path('rechercher_reservation_salle/',views.rechercher_reservation_salle, name="rechercher_reservation_salle"),
+    path('rechercher_reservation_table/',views.rechercher_reservation_table, name="rechercher_reservation_table"),
     path('modifier_salle/<int:myid>/', views.modifier_salle, name="modifier_salle"),
     path('supprimer_salle/<int:myid>/', views.supprimer_salle, name="supprimer_salle"),
     path('modifier_client/<int:myid>/', views.modifier_client, name="modifier_client"),
     path('supprimer_client/<int:myid>/', views.supprimer_client, name="supprimer_client"),
     path('modifier_table/<int:iddd>/', views.modifier_table, name="modifier_table"),
     path('supprimer_table/<int:myid>/', views.supprimer_table, name="supprimer_table"),
+    path('supprimer_reservation_salle/<int:myid>/', views.supprimer_reservation_salle, name="supprimer_reservation_salle"),
+    path('supprimer_reservation_table/<int:myid>/', views.supprimer_reservation_table, name="supprimer_reservation_table"),
+    path('contactez_nous/',views.contactez_nous, name="contactez_nous"),
+    
+    
+   
     
 ]
 
