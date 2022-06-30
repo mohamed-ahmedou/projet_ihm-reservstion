@@ -54,27 +54,25 @@
   
   </head>
   <body>
-<h4><center>  Reservation salle  </center></h4>
+<h4><center>  Reservation-salle-table </center></h4>
   
  <main>
   <div class="row" >
     <div class="col-sm">
     </div>
     <div class="col-sm">
-    <center>
-    <h6 class=""><a class="btn btn-outline-success text-success border-success solid green mt-auto align-self-start" href="{% url 'ajout_reservation_salle' %}">Ajouter une reservation salle</a></h6>
-    </center>
   </div>
   <div class="col-sm">
     <center>
-     
-        <form class="d-flex ml-3" method="POST" action="{% url 'rechercher_reservation_salle' %}" >
+  
+        <form class="d-flex ml-3" method="POST" action="{% url 'rechercher_reservation_salle_table' %}" >
           {% csrf_token %}
-          <input style="width: 160px; height:47px; border-color: green text-green border-green" placeholder="Entrer Numero T"  type="number" aria-label="search" id="tel" name="tel" required>
+          <input style="width: 160px; height:47px; border-color: green text-black border-11px solid" placeholder="Entrer Numero T"  type="number" aria-label="search" id="tel" name="tel" required>
           
           <button class= "btn btn-outline-success text-black border-4px solid green background-color-green" type="submit"> Chercher </button>
         </form> </center>
     </div>
+    <div class="col-sm"> </div>
     <div class="col-sm"> </div>
     
   </div>  
@@ -85,39 +83,48 @@
 <!-- partial:index.partial.html -->
 <div class="row">
     
-<section class="container cd-table-container">
+<section class="container table-container">
  
 
   <table class="cd-table order-table table">
     <thead>
       <tr>
-        <th style="width: 170px;" >Nom</th>
+        <th>Client</th>
         <th>Tel</th>
         <th>Salle</th>
-        <th>Type</th>
-        <th>Date </th>
-        <th style="width: 170px;">Action</th>
-        
+        <th>Table</th>
+        <th>Type-Salle</th>
+        <th>Type-Table</th>
+        <th>Date-Reservation-salle</th>
+        <th>Date-Reservation-table</th>
+        <th>Action</th>
       </tr>
     </thead>
 
     <tbody>
-      {% for items in reserv_salle %}
-      <tr>
-       
-        <td>{{items.client.nom}} {{items.client.prenom}}</td>
-        <td>{{items.client.tel}}</td>
-        <td>{{items.salle.numero}}</td>
-        <td>{{items.salle.type}}</td>
-        <td>{{items.date_reservation}}</td>
-        <td><a  href="/modifier_reservation_salle/{{items.id}}/"> <i class="fas fa-edit"></i></a> 
-            <a class="text-danger" href="/supprimer_reservation_salle/{{items.id}}/" ><i class="fas fa-trash-alt"></i></a> 
-            <a href="/Billet_salle/{{items.id}}/"  class="btn btn-outline-success border-success" style="width: 100px; height:41px"> imprimer </a> </td>
-       
-             
-        </tr>
-        {% endfor %}
+     
+      {% for s in salle %}
+      {% for t in table %}
+      {% if s.client.tel == t.client.tel %}
+      <tr> 
+        <td>{{s.client.nom}} {{s.client.prenom}}</td>
+        <td>{{s.client.tel}}</td>
+        <td>{{s.salle.numero}}</td>
+        <td>{{t.table.numero}}</td>
+        <td>{{s.salle.type}}</td>
+        <td>{{t.table.type}}</td>
+        <td>{{s.date_reservation}}</td>
+        <td>{{t.date_reservation}}</td>
 
+        <td>
+            <a class="text-danger" href="/supprimer_reservation_salle_table/{{s.id}}/{{t.id}}/" ><i class="fas fa-trash-alt"></i></a>  
+        <a href="/Billet_salle_table/{{s.id}}/{{t.id}}/"  class="btn btn-outline-success border-success" style="width: 100px; height:41px"> imprimer </a> </td>
+        </tr>
+       
+      
+        {% endif %}
+        {% endfor %}
+        {%endfor%}
      
     </tbody>
   </table>

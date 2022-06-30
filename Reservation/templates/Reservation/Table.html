@@ -62,7 +62,7 @@
     </div>
     <div class="col-sm">
     <center>
-    <h6 class=""><a class="btn btn-outline-success text-black border-4px solid green mt-auto align-self-start" href="{% url 'ajout_table' %}">Ajouter une table</a></h6>
+    <h6 class=""><a class="btn btn-outline-success text-green border-success solid green mt-auto align-self-start" href="{% url 'ajout_table' %}">Ajouter une table</a></h6>
     </center>
   </div>
   <div class="col-sm">
@@ -93,18 +93,33 @@
     </thead>
   
     <tbody>
+    
       {% for items in table %} 
+     
       <tr>
        
         <td>{{items.numero}}</td>
         <td>{{items.type}}</td>
         <td>{{items.salle}}</td>
+        
+        <td> 
+         
+          {% if l == items.id%}
+          <h6> Reserver  <br>
+         
+            
+           {% else %}
+          <h6> No Reserver <br>
+            {% endif%}
+          
+         
+           </td>
         <td><a  href="/modifier_table/{{items.id}}/" > <i class="fas fa-edit"></i></a> 
           <a class="text-danger" href="/supprimer_table/{{items.id}}/" ><i class="fas fa-trash-alt"></i></a>  </td>
            
         </tr>
-        {% endfor %}  
-
+        
+        {% endfor %}
      
     </tbody>
   </table>

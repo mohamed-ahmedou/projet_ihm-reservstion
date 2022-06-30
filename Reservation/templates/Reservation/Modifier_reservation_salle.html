@@ -96,44 +96,44 @@ h2{
  box-shadow: 0 2px 10px rgba(0,0,0,0.3);
  width: 400px;
  margin: 10px auto;">
-        <form id="form" class="form" method="post" action="{% url 'ajout_reservation_salle' %}">
-            {% csrf_token %}
-            <h4> Saisisser votre information </h4>
+        <form id="form" class="form" method="POST" Action="">
+            {% csrf_token %} 
+            <h4> modifier reservation salle </h4>
             <div class="form-control">
                 <label for="nom">NOM</label>
-                <input type="text" name ="nom" id="nom" placeholder="Entrer votre nom" required   >
+                <input type="text" name ="nom" id="nom" value="{{S.client.nom}}" placeholder="Entrer votre nom" required   >
                 <small>Error Message</small>
             </div>
             <div class="form-control">
               <label for="prenom">PRENOM</label>
-              <input type="text"  name ="prenom" id="prenom" placeholder="Entrer votre prenom" required >
+              <input type="text"  name ="prenom" id="prenom" value="{{S.client.prenom}}" placeholder="Entrer votre prenom" required >
               <small>Error Message</small>
           </div>
           <div class="form-control">
             <label for="tel">TEL</label>
-            <input type="number" name="tel" id="tel" placeholder="Entrer votre N tel" required >
+            <input type="number" name="tel" id="tel" value="{{S.client.tel}}" placeholder="Entrer votre N tel" required >
             <small>Error Message</small>
         </div>
             <div class="form-control">
                 <label for="email">Email</label>
-                <input type="email" name ="email" id="email" placeholder="Entrer votre email" required>
+                <input type="email" name ="email" id="email" value="{{S.client.email}}" placeholder="Entrer votre email" required>
                 <small>Error Message</small>
             </div>
             <div class="form-control">
                 <label for="date_reservation">Date de Reservation</label>
-                <input type="datetime-local" name ="date_reservation" id="date_reservation" placeholder="Entrer la date" required>
+                <input type="datetime-local" name ="date_reservation" value="{{ S.date_reservation}}" id="date_reservation" placeholder="Entrer la date" required>
                 <small>Error Message</small>
             </div>
             <div class="form-control">
                 <label for="table">Choisissez le type de salle</label>
                 <select name="idd" class="form-control" required>
-                    {% for i in salles %}
-                    <option value="{{i.id}}"> {{i.type}} </option>
+                    {% for i in salle %}
+                    <option value="{{i.id}}"> {{i.numero}} {{i.type}} </option>
                     {% endfor %}
                   </select>
             </div>
            
-            <button class="btn btn-outline-success ">Resever Maintenant</button>
+            <button class="btn btn-outline-success ">Modifier Maintenant</button>
         </form>
     </div>
  </main>

@@ -356,8 +356,9 @@ footer .end {
                      
                     <p class="name">Date du Reservation : {{ billet_salle.date_reservation}}  </p>
                       <p class="name">  Salle : {{billet_salle.salle.numero}}<br> </p>
-                      <p class="name">  Table : {{billet_table.table.numero}} dans La salle numero{{billet_table.table.salle.numero}} <br> </p>
+                      <p class="name">  Table : {{billet_table.table.numero}} dans La salle numero : {{billet_table.table.salle.numero}} <br> </p>
                       <p class="name">    Type du Salle : {{billet_salle.salle.type}}<br> </p>
+                      <p class="name">    Type du Table : {{billet_table.table.type}}<br> </p>
                    
                   </div>
                       
@@ -368,18 +369,20 @@ footer .end {
                   <thead>
                       <tr>
                           <th class="qty">Client</th>
-                          <th class="desc">Salle</th>
+                          <th class="desc">Salle-Table</th>
                           <th class="unit">Description</th>
                           <th class="total">Date Reservation</th>
+              
                       </tr>
                   </thead>
                   <tbody>
                       <tr>
                           <td class="qty"> <h3>{{billet_salle.client.nom}} {{billet_salle.client.prenom}}</h3></td>
-                          <td class="desc"><h3>image du salle</h3><br><img src="{% static '/img _reservation/res11.jpg' %}" width="21%" </td>
+                          <td class="desc"> <div class="row"><div class="col-sm"><img src="{% static '/img _reservation/res11.jpg' %}" style="width: 200px;" width="21%"></div>   <img src="{% static '/img _reservation/res7.jpg' %}" style="width: 200px;" width="21%"> </div> </td>
                           <td class="unit"><h3> {{billet_salle.client.nom}} a réservé la Salle numero  {{billet_salle.salle.numero}} le type est {{billet_salle.salle.type}} , date de reservation  {{billet_salle.date_reservation}}</h3></td>
                           <td class="total"><h3>{{billet_salle.date_reservation}}  </h3></td>
-                      </tr>
+                      
+                        </tr>
                      
                      
                   </tbody>

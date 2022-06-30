@@ -1,18 +1,23 @@
 from unicodedata import category
 from django.db import models
-
+from django.core.validators import RegexValidator
 # Create your models here.
 
 class Client(models.Model):
     nom = models.CharField(max_length=50)
     prenom = models.CharField(max_length=50)
     email = models.EmailField(max_length=50)
-    tel = models.IntegerField()
-    
+    verification = RegexValidator(regex="[1-9]{8}", message="Veuillez entrer un numero correct")
+    phone_validator = RegexValidator(regex=r'^(1[1-9]|2[1-2,4,7,8]|3[1-5]|3[7-8]|4[1-9]'
+                                       r'|5[1,3-5]|6[1-9]|7[1,3,4,5,7,9]'
+                                       r'|8[1-9]|9[1-9]){1}[0-9]{8,9}$',
+                                 message="entrer un nombre valide")
+    tel = models.IntegerField(validators=[phone_validator])
+  
     
     
     def __str__(self):
-        return self.nom
+        return f" {self.nom} {self.prenom}"
 
 class Salle(models.Model):
     SALLE_TYPE = (

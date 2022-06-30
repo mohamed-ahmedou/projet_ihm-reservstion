@@ -10,28 +10,47 @@
 
 <div class="jumbotron">
   <center>
-<div class="row w-100">
-  <center>
-        <div class="col-md-3">
-         
-            <div class="card border-success mx-sm-1 p-3">
-                <div class="card border-success shadow text-success p-3 my-card"><img src="{% static '/img _reservation/res23.png' %}" alt="" width="20" height="20" class="d-inline-block align-text-top">
-                </div>
-                <div class="text-success text-center mt-3"> <a href="{% url 'reservation_salle' %}" class="btn btn-outline success text-success">Reservations Salles</a></div>
-               
-            </div>
-        </div>
         
-        <div class="col-md-3">
+       <div class="row">
+        <div class="col-sm">
           <div class="card border-success mx-sm-1 p-3">
-              <div class="card border-success shadow text-success p-3 my-card"><img src="{% static '/img _reservation/res23.png' %}" alt="" width="20" height="20" class="d-inline-block align-text-top">
+              <div class="card border-success shadow text-success p-3 my-card"><center><img src="{% static '/img _reservation/res23.png' %}" alt="" width="20" height="20" class="d-inline-block align-text-top">
               </div>
-              <div class="text-success text-center mt-3"> <a href="{% url 'reservation_table' %}" class="btn btn-outline success text-success">Reservations Tables</a> </div>
+              <div class="text-success text-center mt-3"> <a href="{% url 'reservation_salle' %}" class="btn btn-outline success text-black border-success">Reservations Salles</a> </div>
               
               <div class="text-success text-center mt-2"><h1>{{nb_salle}}</h1></div>
           </div>
-      </div>
-<center>
+        </div>  
+         
+        
+        <div class="col-sm">
+          <div class="card border-success mx-sm-1 p-3">
+              <div class="card border-success shadow text-success p-3 my-card"><center><img src="{% static '/img _reservation/res22.png' %}" alt="" width="20" height="20" class="d-inline-block align-text-top">
+              </div>
+              <div class="text-success text-center mt-3"> <a href="{% url 'reservation_table' %}" class="btn btn-outline success text-black border-success">Reservations Tables</a> </div>
+              
+              <div class="text-success text-center mt-2"><h1>{{nb_salle}}</h1></div>
+          </div>
+        </div>
+
+      <div class="col-sm">
+        <div class="card border-success mx-sm-1 p-3">
+          <div class="row">
+            <div class="col-sm">
+            
+              <div class="card border-success shadow text-success p-3 my-card"><center><img src="{% static '/img _reservation/res23.png' %}" alt="" width="20" height="20" class="d-inline-block align-text-top">
+                <img src="{% static '/img _reservation/res22.png' %}" alt="" width="20" height="20">
+              </div>
+           
+            <div class="text-green text-center mt-3"> <a href="/reservation_salle_table/" class="btn btn-outline success border-success text-black">Reservations Salles-Tables</a> </div>
+            
+            <div class="text-success text-center mt-2"><h1>{{nb_salle}}</h1></div>
+           
+        </div>
+    </div>
+  </div>
+
+
  
 </center>
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>

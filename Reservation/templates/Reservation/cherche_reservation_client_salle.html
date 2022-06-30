@@ -62,7 +62,7 @@
        
                   <div class="col-md-3">
                       <div class="card border-success mx-sm-1 p-3">
-                          <div class="card border-success shadow text-success p-3 my-card" > <h4> Bienvenue</h4> </div>
+                          <div class="card border-success shadow text-success p-3 my-card" > <h4> Bienvenue !</h4> </div>
                           <div class="text-success text-center mt-3"><h5> {{client.nom}} {{client.prenom}}  </h4></div>
                           <div class="text-info text-center mt-2"><h1> </h1></div>
                       </div>
@@ -105,18 +105,18 @@
   <section class="container cd-table-container">
     <h1> {{salle.numero}}</h1>
     <h1> {{client.nom}}</h1>
-   <center> <h3> Desole </center></h3>
-   <center> <h3> il n'ya pas de réservation  pour vos numero </h3>  </center>
+   <center> <h3> <span class="badge bg-danger"> Desole !! </span> </center></h3>
+   <center> <h3> <span class="badge bg-danger"> il n'ya pas de réservation  pour vos numero !! </span> </h3>  </center>
   </section>
   <!-- partial -->
   <section class="container cd-table-container">
    
-    <center><h3>Mais vous pouvez  <h1>  <a class="btn btn-outline-success text-black border-4px solid green mt-auto align-self-start" href="{% url 'reservation_client' %}">Reserver Maintenant</a></h1></h3> </center>
+    <center><h3><span class="badge bg-success"> Mais vous pouvez  </span><h1>  <a class="btn btn-outline-success text-black border-success solid green mt-auto align-self-start" href="{% url 'reservation_client' %}">Reserver Maintenant</a></h1></h3> </center>
      
    </section>
    <section class="container cd-table-container">
    
-    <center><h3> <h1>  <a class="btn btn-outline-success text-black border-4px solid green mt-auto align-self-start" href="{% url 'vos_reservation_salle' %}">Retourner</a></h1></h3> </center>
+    <center><h3> <h1>  <a class="btn btn-outline-success text-black border-success solid green mt-auto align-self-start" href="{% url 'vos_reservation_salle' %}">Retourner</a></h1></h3> </center>
      
    </section>
    </main>

@@ -87,7 +87,7 @@
       <tr>
         <th>Numero</th>
         <th>Type</th>
-        <th>Status</th>
+        <th>Statut</th>
         <th>Action</th>
         
       </tr>
@@ -99,7 +99,13 @@
         
         <td>{{re.numero}}</td>
         <td>{{re.type}}</td>
-        <td> </td>
+        <td> {% for s in res_salle %}
+          {% if re.numero == s.salle.numero %}
+          {{Reserver}}
+          {% endif%}
+         
+
+          {% endfor %} </td>
         <td><a  href="/modifier_salle/{{re.id}}/" > <i class="fas fa-edit"></i></a> 
           <a class="text-danger" href="/supprimer_salle/{{re.id}}/" ><i class="fas fa-trash-alt"></i></a>  </td>
             

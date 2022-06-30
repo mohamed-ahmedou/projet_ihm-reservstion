@@ -91,43 +91,43 @@ h2{
   <body>
  
   
-    <main>
-    <div style=" border-radius: 5px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.3);
-    width: 400px;
-    margin: 10px auto;">
-    <form id="form" class="form" method="post" action=" /modifier_table/{{t.id}}/">
-       {% csrf_token %}
-       <h4> Ajouter une salle </h4>
-       <div class="form-control">
-           <label for="numero">Numero</label>
-           <input type="text" name ="numero" id="numero" value="{{t.numero}}" placeholder="Ajouter le numero">
-           
-       </div>
-       
-       <div class="form-control">
-           <label for="table">Modifier le type de table</label>
-           <select name="type" class="form-control" id="type" value="{{t.type}}">
-               <option value="NORMAL"> NORMAL  </option>
-               <option value="VIP"> VIP</option>
-             </select>
-       </div>
-       <div class="form-control">
-        <label for="table">Modifier le salle</label>
-        <select name="idd" class="form-control" id="idd">
-        {% for i in s %}
+ <main>
+ <div style=" border-radius: 5px;
+ box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+ width: 400px;
+ margin: 10px auto;">
+ <form id="form" class="form" method="post" action="">
+    {% csrf_token %}
+    <h4> Modifier une table </h4>
+    <div class="form-control">
+        <label for="numero"> Modifier le numero</label>
+        <input type="number" name ="numero" id="numero" value="{{t.numero}}" placeholder="Ajouter le numero" required>
         
-            <option value="{{i.id}}"> {{i.type}} {{i.numero}} </option>
-            {% endfor %}
+    </div>
+    
+    <div class="form-control">
+        <label for="table">Modifier le type de table</label>
+        <select name="type" class="form-control" id="type" value="{{t.type}}" required>
+            <option value="NORMAL"> NORMAL  </option>
+            <option value="VIP"> VIP</option>
           </select>
     </div>
-      
-       <button type="submit" class="btn btn-outline-success ">Modifier</button>
-   </form>
-   </div>
+
+    <div class="form-control">
+      <label for="table">Modifier le type de salle</label>
+      <select name="idd" class="form-control" id="type" value="idd" required>
+        {% for i in s %}
+          <option value="{{i.id}}"> {{i.type}} {{i.numero}}   </option>
+         {% endfor %}
+        </select>
+  </div>
    
-    </main>
-   </body>
+    <button type="submit" class="btn btn-outline-success ">Modifier</button>
+</form>
+</div>
+
+ </main>
+</body>
  
       
 
